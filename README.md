@@ -25,6 +25,4 @@ Demo: https://suica.github.io/web-flipclock/index.html
 
 ## screenshot / 截图
 
-...to be added
-
-...待添加
+![screenshot](https://github.com/suica/web-flipclock/blob/master/doc/screenshot.png?raw=true)
