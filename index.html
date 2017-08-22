@@ -20,6 +20,7 @@
 	}
 	#scaler{
 		margin-top: 20px;
+		display:none;
 	}
 	.hide{
 		opacity: 0;
@@ -34,7 +35,7 @@
 	<center>
 		<br>
 		<br>
-		<div class="hide description">Created with the brilliant opensource package <em><a target="_blank" href="http://www.flipclockjs.com/">FlipClock</a></em></div>
+		<div class="hide description">Created with the brilliant opensource package <em><a target="_blank" href="http://www.flipclockjs.com/">FlipClock.js</a></em></div>
 		<br>
 		<div class="hide">By @<em><a target="_blank" href="https://github.com/suica">suicca</em></a></div>
 		<input id="scaler" class="hide" type="range"  min="0.5"  max="2.3" step="0.1" />
@@ -110,7 +111,7 @@
 				let width = $(window).width();
 				if(width<520 && width){
 					let ideal = width/520;
-					$("#scaler").val(ideal);
+					$("#scaler").val('0.5');
 				}else if(width<768){
 					$("#scaler").val('1.0');
 				}else if(width<992){
