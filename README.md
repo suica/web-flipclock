@@ -10,9 +10,7 @@ Demo: https://suica.github.io/web-flipclock/index.html
 
 2. Optimized for mobile device. Your phones and tablets, could function as a flip clock with a click.
 
-3. Click the clock to scale.
-
-4. Double click the blank area to enter and quit the fullscreen mode.
+3. Double click the blank area to enter and quit the fullscreen mode.
 
 
 ## 简介
@@ -23,9 +21,7 @@ Demo: https://suica.github.io/web-flipclock/index.html
 
 2. 为移动设备特别优化. 您的手机与平板, 都能一下子变成时钟.
 
-3. 单击时钟, 进行缩放.
-
-4. 双击空白, 进退全屏.
+3. 双击空白, 进退全屏.
 
 ## screenshot / 截图
 
