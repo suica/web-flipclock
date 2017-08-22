@@ -1,0 +1,136 @@
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>
+		web-flip-clock
+	</title>
+	<link href="https://cdn.bootcss.com/flipclock/0.7.8/flipclock.min.css" rel="stylesheet">
+	<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://cdn.bootcss.com/flipclock/0.7.8/flipclock.min.js"></script>
+	<style>
+	body{
+		background-color: #222;
+		overflow: hidden;
+		margin:-20px;
+	}
+	.clock{
+		width:460px;
+		margin:-100px;
+		top:25vh;
+	}
+	#scaler{
+		margin-top: 50px;
+	}
+	.hide{
+		opacity: 0;
+		transition: 0.3s;
+	}
+	.description{
+		color:white;
+	}
+	</style>
+</head>
+<body>
+	<center>
+		<br>
+		<br>
+		<div class="hide description">Created with the brilliant opensource package <em><a target="_blank" href="http://www.flipclockjs.com/">FlipClock</a></em></div>
+		<br>
+		<div class="hide">By @<em><a target="_blank" href="https://github.com/suica">suicca</em></a></div>
+		<input id="scaler" class="hide" type="range"  min="0.5"  max="4" step="0.1" />
+		<div class="clock"></div>
+	</center>
+	<script type="text/javascript">
+	var clock;
+	var visible = false;
+	var fullscreen = false;
+	$(document).ready(function() {
+		clock = $('.clock').FlipClock({
+			clockFace: 'TwentyFourHourClock'
+		});
+		$("body").dblclick(() => {
+			if(fullscreen){
+				if (document.exitFullscreen) {
+					document.exitFullscreen();
+				}
+				else if (document.mozCancelFullScreen) {
+					document.mozCancelFullScreen();
+				}
+				else if (document.webkitCancelFullScreen) {
+					document.webkitCancelFullScreen();
+				}
+				else if (document.msExitFullscreen) {
+					document.msExitFullscreen();
+				}
+				fullscreen = false;
+			}else{
+				var docElm = document.documentElement;
+				//W3C
+				if (docElm.requestFullscreen) {
+					docElm.requestFullscreen();
+				}
+				//FireFox
+				else if (docElm.mozRequestFullScreen) {
+					docElm.mozRequestFullScreen();
+				}
+				//Chrome等
+				else if (docElm.webkitRequestFullScreen) {
+					docElm.webkitRequestFullScreen();
+				}
+				//IE11
+				else if (elem.msRequestFullscreen) {
+					elem.msRequestFullscreen();
+				}
+				fullscreen = true;
+			}
+		})
+		$(".clock").click((e) => {
+			e.preventDefault();
+			if(visible){
+				visible = false;
+				$(".hide").css('opacity',0);
+			}else{
+				visible = true;
+				$(".hide").css('opacity',1);
+			}
+		})
+		const applyScale = () => {
+			let scale = $("#scaler").val();
+			console.log(scale);
+			localStorage.scale = scale;
+			$(".clock").css('transform',"scale("+scale+")");
+		}
+		const adjust = () => {
+			let scale = localStorage.scale;
+			if(scale){
+				$("#scaler").val(scale);
+			}else{
+				let width = $(window).width();
+				if(width<520 && width){
+					$("#scaler").val('0.5');
+				}else if(width<768){
+					$("#scaler").val('1.0');
+				}else if(width<992){
+					$("#scaler").val('1.5');
+				}else if(width<1200){
+					$("#scaler").val('1.8');
+				}else if(width<2500){
+					$("#scaler").val('2.0');
+				}else{
+					$("#scaler").val('2.5');
+				}
+			}
+			applyScale();
+		}
+		$("#scaler").change(() => {
+			applyScale();
+		})
+		$(window).resize(() => {
+			localStorage.clear();
+			adjust();
+		})
+		adjust();
+	});
+	</script>
+</body>
+</html>
