@@ -1,37 +1,31 @@
-## Welcome to GitHub Pages
+### web-flipclock
 
-You can use the [editor on GitHub](https://github.com/suica/web-flipclock/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+Demo: https://suica.github.io/web-flipclock/index.html
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+# Inroduction
 
-### Markdown
+1. Created with `flipclock.js`. Flip clocks on ios require purchase to get rid of ads. I hate this.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+2. Optimized for mobile device. Your phones and tablets, could functions as a flipclock with a click.
 
-```markdown
-Syntax highlighted code block
+3. Click the clock to scale.
 
-# Header 1
-## Header 2
-### Header 3
+4. Double click the blank area to enter and quit the fullscreen mode.
 
-- Bulleted
-- List
 
-1. Numbered
-2. List
+# 简介
 
-**Bold** and _Italic_ and `Code` text
 
-[Link](url) and ![Image](src)
-```
+1. 用`flipclock.js`进行构建. ios上的最简单的翻页时钟都去广告收费.我不喜欢这种做法.
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+2. 为移动设备特别优化. 您的手机与平板, 都能一下子变成时钟.
 
-### Jekyll Themes
+3. 单击时钟, 进行缩放.
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/suica/web-flipclock/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+4. 双击空白, 进退全屏.
 
-### Support or Contact
+# screenshot / 截图
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+...to be added
+
+...待添加
