@@ -4,7 +4,11 @@
 	<title>
 		web-flipclock
 	</title>
-	<link rel="icon" href="./doc/favicon.ico">
+	<link rel="shortcut icon" href="./doc/favicon.ico">
+	<link rel="bookmark" href="./doc/favicon.ico">
+	<link rel="apple-touch-icon" href="./doc/favicon.ico">
+	<!-- <link rel="apple-touch-icon" sizes="114x114" href="./doc/favicon.ico"> -->
+	<!-- <link rel="apple-touch-icon" sizes="144x144" href="./doc/favicon.ico"> -->
 	<link href="https://cdn.bootcss.com/flipclock/0.7.8/flipclock.css" rel="stylesheet">
 	<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://cdn.bootcss.com/flipclock/0.7.8/flipclock.min.js"></script>
@@ -38,7 +42,7 @@
 		<br>
 		<div class="hide description">Created with the brilliant opensource package <em><a target="_blank" href="http://www.flipclockjs.com/">FlipClock.js</a></em></div>
 		<br>
-		<div class="hide">By @<em><a target="_blank" href="https://github.com/suica">suicca</em></a></div>
+		<div class="hide description">By <em><a target="_blank" href="https://github.com/suica">suicca</em></a></div>
 		<input id="scaler" class="hide" type="range"  min="0.5"  max="2.3" step="0.1" />
 		<br>
 		<br>
@@ -52,7 +56,7 @@
 		clock = $('.clock').FlipClock({
 			clockFace: 'TwentyFourHourClock'
 		});
-		$("body").dblclick(() => {
+		$("body").dblclick(function (){
 			if(fullscreen){
 				if (document.exitFullscreen) {
 					document.exitFullscreen();
@@ -88,7 +92,7 @@
 				fullscreen = true;
 			}
 		})
-		$(".clock").click((e) => {
+		$(".clock").click( function(e) {
 			e.preventDefault();
 			if(visible){
 				visible = false;
@@ -98,40 +102,33 @@
 				$(".hide").css('opacity',1);
 			}
 		})
-		const applyScale = () => {
-			let scale = $("#scaler").val();
+		var applyScale = function () {
+			var scale = $("#scaler").val();
 			console.log(scale);
-			localStorage.scale = scale;
 			$(".clock").css('transform',"scale("+scale+")");
 		}
-		const adjust = () => {
-			let scale = localStorage.scale;
-			if(scale){
-				$("#scaler").val(scale);
+		var adjust = function (){
+			var width = $(window).width();
+			if(width<520 && width){
+				var ideal = width/520;
+				$("#scaler").val(ideal);
+			}else if(width<768){
+				$("#scaler").val('1.0');
+			}else if(width<992){
+				$("#scaler").val('1.5');
+			}else if(width<1200){
+				$("#scaler").val('1.8');
+			}else if(width<2500){
+				$("#scaler").val('2.0');
 			}else{
-				let width = $(window).width();
-				if(width<520 && width){
-					let ideal = width/520;
-					$("#scaler").val('0.5');
-				}else if(width<768){
-					$("#scaler").val('1.0');
-				}else if(width<992){
-					$("#scaler").val('1.5');
-				}else if(width<1200){
-					$("#scaler").val('1.8');
-				}else if(width<2500){
-					$("#scaler").val('2.0');
-				}else{
-					$("#scaler").val('2.3');
-				}
+				$("#scaler").val('2.3');
 			}
 			applyScale();
 		}
-		$("#scaler").change(() => {
+		$("#scaler").change(function() {
 			applyScale();
 		})
-		$(window).resize(() => {
-			localStorage.clear();
+		$(window).resize(function() {
 			adjust();
 		})
 		adjust();
